@@ -1,0 +1,210 @@
+
+    <div th:replace="components/header::navbar"></div>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h1>Bagikan gaji Anda</h1>
+            <h2>
+              Berikan kontribusi dengan membagikan informasi tentang pekerjaan,
+              pengalaman dan gaji atau pendapatan Anda kepada orang lain.
+            </h2>
+            <div class="d-flex justify-content-center justify-content-lg-start">
+              <a href="#gajianda" class="btn-get-started scrollto"
+                >Mulai bagikan</a
+              >
+            </div>
+          </div>
+
+          <div
+            class="col-lg-6 order-1 order-lg-2 hero-img"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="/semri/assets/img/hero-img.png"
+              class="img-fluid animated"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+    <!-- ======= Services Section ======= -->
+    <section id="gajianda" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Penghasilan Anda</h2>
+          <p>
+            Mari saling berbagi pengalaman. Bagikan tempat Anda bekerja,
+            deskripsi pekerjaan, dan pendapatan Anda saat ini kepada orang lain.
+          </p>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-10 mt-5 mt-lg-0">
+            <div
+              th:if="${success}"
+              class="mb-3 alert alert-success alert-dismissible"
+              role="alert"
+            >
+              Data berhasil disimpan. Terimakasih sudah ikut berkontribusi 🙏🙏.
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+            <!-- Form -->
+            <form
+              th:object="${gaji}"
+              th:action="@{/storeGaji}"
+              method="post"
+              class="php-email-form"
+            >
+              <div class="row">
+                <div class="form-group mb-3">
+                  <label for="nama">Nama Anda</label>
+                  <input
+                    type="text"
+                    th:field="*{nama}"
+                    class="form-control"
+                    id="nama"
+                    placeholder="Contoh: Jufento Semri Lake"
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="kota">Alamat/Kota Anda bekerja</label>
+                  <input
+                    type="text"
+                    th:field="*{kota}"
+                    class="form-control"
+                    id="kota"
+                    placeholder="Contoh: Kupang, NTT"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="perusahaan"
+                    >Nama perusahaan/instansi/yayasan tempat bekerja</label
+                  >
+                  <input
+                    type="text"
+                    th:field="*{perusahaan}"
+                    class="form-control"
+                    id="perusahaan"
+                    placeholder="Contoh: UNWIRA"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="pekerjaan">Bekerja sebagai</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{pekerjaan}"
+                    id="pekerjaan"
+                    placeholder="Contoh: Programmer"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="pengalaman">Pengalaman berapa tahun?</label>
+                  <input
+                    type="number"
+                    min="1"
+                    class="form-control"
+                    th:field="*{pengalaman}"
+                    id="pengalaman"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="gaji">Gaji per bulan (Rp.) </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{gaji}"
+                    id="gaji"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="deskripsi">Deskripsi pekerjaan</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{deskripsi}"
+                    id="deskripsi"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">
+                  Your message has been sent. Thank you!
+                </div>
+              </div> -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+              </div>
+            </form>
+            <!-- end form -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Services Section -->
+
+    <div th:replace="components/footer::footer"></div>
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/semri/assets/vendor/aos/aos.js"></script>
+    <script src="/semri/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/semri/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/semri/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/semri/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/semri/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <!-- <script src="/semri/assets/vendor/php-email-form/validate.js"></script> -->
+
+    <!-- Template Main JS File -->
+    <script src="/semri/assets/js/main.js"></script>
+    <!-- <script>
+      var gaji = document.getElementById("gaji");
+      gaji.addEventListener("keyup", function (e) {
+        gaji.value = formatRupiah(this.value);
+      });
+
+      function formatRupiah(angka, prefix) {
+        var num_string = angka.replace(/[^,\d]/g, "").toString(),
+          split = num_string.split(","),
+          sisa = split[0].length % 3,
+          rupiah = split[0].substr(0, sisa),
+          ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+          separator = sisa ? "." : "";
+          rupiah += separator + ribuan.join(".");
+        }
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? rupiah : "";
+      }
+    </script> -->
+  </body>
+</html>
